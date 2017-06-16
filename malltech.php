@@ -2,7 +2,7 @@
 /*
  * DEFINE TOKEN E API
  */
-define('BOT_TOKEN', '347712677:AAEaX0w4Hmc2oR_QY3911_YF8ixSX8mV2y8');
+define('BOT_TOKEN', '312264482:AAFF3tzO-kXpvviO1m4BnFixKv-_RMxewig');
 define('API_URL', 'https://api.telegram.org/bot' . BOT_TOKEN . '/');
 function processaMensagem($message, $alfred) {
     $idchat = $destino = $message['chat']['id'];
@@ -19,7 +19,7 @@ function processaMensagem($message, $alfred) {
     if ($comando == "link" || $comando == "linksuteis") {
         $mensagem = "<b>LINKS ÚTEIS:</b>\nComunidade no Medium:\nhttps://medium.com/botsbrasil\nLista de bots brasileiros:\nhttp://www.botsbrasil.com.br/\nFormulário para adicionar um chatbot na lista do Bots Brasil:\nhttps://botsbrasil.typeform.com/to/Y4fLU8\nNão sabe o que é chatbot?\nhttps://medium.com/botsbrasil/o-que-%C3%A9-um-chatbot-7fa2897eac5d#.yuq1q9v0s\nSe quiser participar da comunidade do ChatBot Brasil é só entrar no grupo:\nhttps://www.facebook.com/groups/chatbotbrasil/?fref=ts \nChatbot Pernambuco:\nhttps://www.facebook.com/groups/247260785715123/\n\nCríticas e sugestões serão sempre bem vindas e faz a comunidade evoluir.\nQualquer dúvida é só falar.";
     }
-    if ($alfred == true) {
+    if ($malltech == true) {
         $time = date("H", strtotime('-3 hours'));
         if ($time < "12") {
             $periodo = 'manhã';
@@ -136,9 +136,9 @@ if (isset($update['callback_query'])) {
 /*
  * ATIVANDO O BOT
  */
-$alfred = (strpos(strtolower($update['message']['text']), strtolower('alfred')) !== false) ? true : false;
-if (isset($update['message']['text']) && (substr($update['message']['text'], 0, 1) == '/' || $alfred/* substr(strtolower($update['message']['text']),0,6) == 'alfred' */)) {
-    processaMensagem($update['message'], $alfred);
+$malltech = (strpos(strtolower($update['message']['text']), strtolower('malltech')) !== false) ? true : false;
+if (isset($update['message']['text']) && (substr($update['message']['text'], 0, 1) == '/' || $malltech/* substr(strtolower($update['message']['text']),0,6) == 'malltech' */)) {
+    processaMensagem($update['message'], $malltech);
 }
 if (isset($update['message']['new_chat_member'])) {
     enviaResposta("sendMessage", array('parse_mode' => 'HTML', 'chat_id' => $update['message']['chat']['id'], 'disable_web_page_preview' => true, 'text' => "Seja bem-vindo, patrão <b>{$update['message']['new_chat_member']['first_name']}</b> sinta-se a vontade. Aqui você pode falar de assuntos relacionados a: ChatBots, PLN, IA, Facebook Messenger, Slack, Telegram...\nCríticas e sugestões serão sempre bem vindas e faz a comunidade evoluir. Qualquer dúvida é só falar."));
