@@ -4,7 +4,7 @@
  */
 define('BOT_TOKEN', '312264482:AAFF3tzO-kXpvviO1m4BnFixKv-_RMxewig');
 define('API_URL', 'https://api.telegram.org/bot' . BOT_TOKEN . '/');
-function processaMensagem($message, $alfred) {
+function processaMensagem($message, $malltech) {
     $idchat = $destino = $message['chat']['id'];
     $iduser = $message['from']['id'];
     $user = $message['from']['first_name'];
